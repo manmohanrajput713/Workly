@@ -96,8 +96,8 @@ passport.deserializeUser(User.deserializeUser());
 const transporter = nodemailer.createTransporter({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER || 'your-email@gmail.com',
-        pass: process.env.EMAIL_PASS || 'your-app-password'
+        user: "manmohansingh@iipe.ac.in",
+        pass: "mklz gity kqia hzaw"
     }
 });
 
@@ -160,7 +160,7 @@ async function sendVerificationEmail(user, req) {
     const verificationUrl = `${req.protocol}://${req.get('host')}/verify-email/${token}`;
     
     const mailOptions = {
-        from: process.env.EMAIL_USER || 'your-email@gmail.com',
+        from: "manmohansingh@iipe.ac.in",
         to: user.email,
         subject: 'Verify Your Workly Account',
         html: `
