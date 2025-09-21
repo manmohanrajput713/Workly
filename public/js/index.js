@@ -187,10 +187,10 @@
 
                     case 'signupName':
                         if (!value) {
-                            errorMessage = 'Name is required';
+                            errorMessage = 'Username is required';
                             isValid = false;
                         } else if (value.length < 2) {
-                            errorMessage = 'Name must be at least 2 characters';
+                            errorMessage = 'Username must be at least 2 characters';
                             isValid = false;
                         }
                         break;
@@ -206,16 +206,6 @@
                         }
                         break;
 
-                    case 'signupConfirmPassword':
-                        const password = document.getElementById('signupPassword').value;
-                        if (!value) {
-                            errorMessage = 'Please confirm your password';
-                            isValid = false;
-                        } else if (value !== password) {
-                            errorMessage = 'Passwords do not match';
-                            isValid = false;
-                        }
-                        break;
                 }
 
                 this.showFieldError(input, errorMessage, !isValid);

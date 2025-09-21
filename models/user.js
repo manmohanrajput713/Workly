@@ -18,6 +18,26 @@ const userSchema=new Schema({
         required:true
     },
     
+    googleId: {
+        type: String,
+        default: null
+    },
+    
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    
+    emailVerificationToken: {
+        type: String,
+        default: null
+    },
+    
+    emailVerificationExpires: {
+        type: Date,
+        default: null
+    },
+    
     resetPasswordToken: {
         type: String,
         default: null, // Stores the token for password reset
