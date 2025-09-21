@@ -1,0 +1,83 @@
+<% layout("/layouts/boilerplate") %>
+
+ 
+ 
+ <div class="container">
+        <div class="header">
+            <h1 class="page-title">Listings</h1>
+        </div>
+
+        <div class="recycler-view" id="job-list">
+            <% 
+                // Filter out jobs posted by current user
+                let filteredJobs = jobs || [];
+                if (currUser) {
+                    filteredJobs = filteredJobs.filter(job => 
+                        !job.postedBy || 
+                        !job.postedBy._id || 
+                        job.postedBy._id.toString() !== currUser._id.toString()
+                    );
+                }
+            %>
+
+            <% if(filteredJobs.length > 0) { %>
+                <% filteredJobs.forEach(job => { %>
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="job-avatar">
+                                <%= job.title.split(' ').map(n => n[0]).join('').slice(0, 2) %>
+                            </div>
+                            <div class="job-meta">
+                                <h3 class="job-title"><%= job.title %></h3>
+                                <div class="job-category"><%= job.category %></div>
+                            </div>
+                        </div>
+                        
+                        <div class="job-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">💰</span>
+                                <span class="detail-value">$<%= job.budget.toLocaleString() %></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📅</span>
+                                <span class="detail-value">
+                                    <%= job.deadline.toLocaleDateString('en-US', { 
+                                        year: 'numeric', 
+                                        month: 'short', 
+                                        day: 'numeric' 
+                                    }) %>
+                                </span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📌</span>
+                                <span class="detail-value"><%= job.experienceLevel %> Level</span>
+                            </div>
+                        </div>
+        
+                        <div class="job-description">
+                            <p><%= job.description.substring(0, 100) %>...</p>
+                        </div>
+                       <form action="/jobs/<%= job._id %>"><button class="btn">View</button></form> 
+                        
+                        <br><br>
+                        <% if (job.postedBy && job.postedBy.username) { %>
+                            <div class="job-poster">
+                                <span class="posted-by">Posted by: <%= job.postedBy.username %></span>
+                                <span class="post-date">
+                                    <%= job.createdAt.toLocaleDateString() %>
+                                </span>
+                            </div>
+                        <% } %>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="empty-state">
+                    <div class="empty-icon">📭</div>
+                    <div class="empty-text">No job postings available</div>
+                    <div class="empty-subtext">Check back later or post a new job!</div>
+                </div>
+            <% } %>
+        </div>
+
+        
+    </div>

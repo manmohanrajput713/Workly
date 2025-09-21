@@ -1,0 +1,191 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <div class="bg-animation"></div>
+
+   
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Build. Collaborate. Get Paid.</h1>
+                <h2 class="hero-title" style="font-size: 3rem; margin-top: -1rem;">Welcome to Workly.</h2>
+                <p class="hero-subtitle">AI-backed freelancing built for devs and innovators.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary" id="loginBtn">Start Hiring</a>
+                    <a href="#" class="btn-secondary" id="loginBtn">Join as Freelancer</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dot dot-red"></div>
+                        <div class="terminal-dot dot-yellow"></div>
+                        <div class="terminal-dot dot-green"></div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="terminal-line">
+                            <span class="prompt">workly@dev:~$ </span>
+                            <span class="command">npm start project</span>
+                        </div>
+                        <div class="terminal-line output">
+                            > Connecting to AI-powered matching...
+                        </div>
+                        <div class="terminal-line success">
+                            ✓ Found 47 qualified developers
+                        </div>
+                        <div class="terminal-line success">
+                            ✓ Project summarized for client
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">workly@dev:~$ </span>
+                            <span class="command">git commit -m "deployed"</span>
+                        </div>
+                        <div class="terminal-line success">
+                            ✓ Auto-explanation generated
+                        </div>
+                        <div class="terminal-line success">
+                            ✓ Payment processed securely
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">workly@dev:~$ </span>
+                            <span class="command" style="animation: blink 1s infinite;">_</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="floating-elements">
+                    <div class="floating-card floating-card-1">
+                        <div style="color: var(--primary-green); font-weight: 600;">🚀 Real-time Updates</div>
+                        <div style="font-size: 0.8rem; color: var(--light-gray);">Node.js + MongoDB</div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+     <!-- login model      -->
+     <div class="modal-overlay" id="loginModalOverlay">
+        <div class="modal" id="loginModal">
+            <div class="modal-header">
+                <button class="close-btn" id="loginCloseBtn">&times;</button>
+                <h2 class="modal-title">Welcome Back</h2>
+                <p class="modal-subtitle">Sign in to your Workly account</p>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" action="/login" method="post">
+                    <div class="form-group">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" class="form-input" name="username" id="loginEmail" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="loginPassword">Password</label>
+                        <input type="password" name="password" class="form-input" id="loginPassword" placeholder="Enter your password" required>
+                        <div class="error-message" id="loginPasswordError"></div>
+                        <div class="forgot-password">
+                            <a href="#" id="forgotPasswordLink">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn" id="loginSubmitBtn">Login</button>
+                </form>
+                <div class="form-footer">
+                    <p>Don't have an account? <a id="switchToSignup">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal-overlay" id="signupModalOverlay">
+        <div class="modal" id="signupModal">
+            <div class="modal-header">
+                <button class="close-btn" id="signupCloseBtn">&times;</button>
+                <h2 class="modal-title">Join Workly</h2>
+                <p class="modal-subtitle">Create your freelance account</p>
+            </div>
+            <div class="modal-body">
+                <form id="signupForm" action="/signup" method="post">
+                    <div class="form-group">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" class="form-input" name="username" id="signupName" placeholder="Enter your full name" required>
+                        <div class="error-message" id="signupNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" class="form-input" name="email" id="signupEmail" placeholder="Enter your email" required>
+                        <div class="error-message" id="signupEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" class="form-input" name="password" id="signupPassword" placeholder="Create a password" required>
+                        <div class="error-message" id="signupPasswordError"></div>
+                    </div>
+                     <div class="form-group">
+                        <label class="form-label" for="signupConfirmPassword">Confirm Password</label>
+                        <input type="password" class="form-input" id="signupConfirmPassword" placeholder="Confirm your password" required>
+                        <div class="error-message" id="signupConfirmPasswordError"></div>
+                    </div>
+                    <button type="submit" class="submit-btn" id="signupSubmitBtn">Sign Up</button>
+                </form>
+                <div class="form-footer">
+                    <p>Already have an account? <a id="switchToLogin">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </section>
+
+    <!-- Why Choose Workly Section -->
+    <section class="why-workly">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Workly?</h2>
+                <p class="section-subtitle">Experience the future of freelancing with our AI-powered platform designed by student developers who understand what modern tech teams need.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-robot feature-icon"></i>
+                    <h3 class="feature-title">AI-Powered Work Summaries</h3>
+                    <p class="feature-desc">Our advanced AI automatically <span class="tech-highlight">summarizes work delivered</span> and generates plain-English updates for admins and clients. No more confusion about project progress - get clear, automated reports that everyone can understand.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-code-branch feature-icon"></i>
+                    <h3 class="feature-title">Automatic Code Transparency</h3>
+                    <p class="feature-desc">Every <span class="tech-highlight">git commit gets automatic explanations</span> in plain language. Build trust and transparency with clients who can understand exactly what was changed, when, and why - without needing technical knowledge.</p>
+                </div>
+                
+                
+                
+                <div class="feature-card">
+                    <i class="fas fa-bolt feature-icon"></i>
+                    <h3 class="feature-title">Modern Tech Stack</h3>
+                    <p class="feature-desc">Built on a cutting-edge <span class="tech-highlight">Node.js + MongoDB + Express.js</span> stack with real-time updates and seamless performance. Experience lightning-fast load times and instant notifications.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3 class="feature-title">Trust & Security First</h3>
+                    <p class="feature-desc">Advanced security measures protect your projects and payments. With automatic code commit tracking and <span class="tech-highlight">end-to-end transparency</span>, you always know where your project stands.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-rocket feature-icon"></i>
+                    <h3 class="feature-title">Gen Z Innovation</h3>
+                    <p class="feature-desc">Designed with <span class="tech-highlight">simplicity and innovation</span> at its core. Clean interfaces, intuitive workflows, and modern design patterns that just make sense for today's digital-native workforce.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    
+</body>
+
+      

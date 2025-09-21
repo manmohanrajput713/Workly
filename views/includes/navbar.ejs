@@ -1,0 +1,28 @@
+ <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">Workly</a>
+             <% if (currUser) { %>
+               <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                
+                <li><form action="/listing" method="get"><a >Browse Projects</a></form></li>
+                <li><a href="#">Why Workly</a></li>
+               </ul>
+               <form action="/logout" method="post">
+                <div class="cta-buttons">
+                <button class="btn" style="width: 10rem;">Logout</button>
+               </div>
+               </form>
+               
+            <% } else { %>
+                  
+              <div class="cta-buttons">
+                <button class="btn" id="loginBtn">Login</button>
+                <button class="btn" id="signupBtn">Sign Up</button>
+              </div>
+                 
+            <% } %>
+        </nav>
+        
+    </header>
