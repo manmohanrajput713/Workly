@@ -177,7 +177,7 @@ async function sendVerificationEmail(user, req) {
     };
     
     await transporter.sendMail(mailOptions);
-})
+}
 
 app.post("/signup", wrapAsync(async (req, res, next) => {
     try {
