@@ -93,8 +93,10 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Email transporter setup
-const transporter = nodemailer.createTransporter({
-    service: 'gmail',
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for port 465, false for other ports
     auth: {
         user: "manmohansingh@iipe.ac.in",
         pass: "mklz gity kqia hzaw"
